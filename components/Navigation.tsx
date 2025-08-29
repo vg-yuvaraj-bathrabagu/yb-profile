@@ -16,10 +16,6 @@ export default function Navigation() {
     { href: '#contact', label: 'Contact' },
   ];
 
-  const handleDownloadPDF = () => {
-    window.print();
-  };
-
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
@@ -41,12 +37,14 @@ export default function Navigation() {
             {link.label}
           </a>
         ))}
-        <button
-          onClick={handleDownloadPDF}
+        <a
+          href="/document/yuvaraj-resume.pdf"
+          download
           className="bg-black/80 backdrop-blur-sm border-2 border-cyber-cyan text-cyber-cyan px-4 py-2 font-orbitron text-xs font-semibold uppercase tracking-wider rounded transition-all duration-300 hover:bg-cyber-cyan hover:text-cyber-bg hover:shadow-[0_0_20px_var(--cyber-cyan)] hover:-translate-y-0.5 will-change-transform"
+          aria-label="Download resume (PDF)"
         >
-          Download PDF
-        </button>
+          Download Resume
+        </a>
       </nav>
 
       {/* Mobile Navigation Toggle */}
@@ -102,16 +100,19 @@ export default function Navigation() {
                     {link.label}
                   </motion.a>
                 ))}
-                <motion.button
-                  onClick={handleDownloadPDF}
+                <motion.a
+                  href="/document/yuvaraj-resume.pdf"
+                  download
+                  onClick={() => setIsMobileMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navLinks.length * 0.1 }}
                   className="block w-full px-6 py-4 text-left text-text-secondary font-orbitron text-sm uppercase tracking-wider transition-all hover:text-cyber-cyan hover:bg-cyber-cyan/10 hover:pl-10 hover:border-l-[3px] hover:border-cyber-cyan hover:shadow-[inset_0_0_10px_rgba(0,255,255,0.2)] relative group"
+                  aria-label="Download resume (PDF)"
                 >
                   <span className="absolute left-2 top-1/2 -translate-y-1/2 w-1 h-1 bg-cyber-cyan rounded-full scale-0 group-hover:scale-100 transition-transform" />
                   Download PDF
-                </motion.button>
+                </motion.a>
               </div>
             </motion.div>
           </>

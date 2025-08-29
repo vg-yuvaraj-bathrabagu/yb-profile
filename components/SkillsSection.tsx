@@ -23,8 +23,9 @@ export default function SkillsSection() {
     {
       title: 'Core Development',
       skills: [
-        { name: 'JavaScript/Node.js', percentage: 95 },
-        { name: 'React/Angular', percentage: 90 },
+        { name: 'JavaScript/Node.js', percentage: 85 },
+        { name: 'React', percentage: 80 },
+        { name: 'React Native', percentage: 55 },
         { name: 'PHP', percentage: 93 },
         { name: 'Python', percentage: 85 },
         { name: 'TypeScript', percentage: 88 },
@@ -33,19 +34,19 @@ export default function SkillsSection() {
     {
       title: 'Infrastructure & DevOps',
       skills: [
-        { name: 'Docker/Kubernetes', percentage: 85 },
-        { name: 'Linux Administration', percentage: 92 },
-        { name: 'CI/CD Pipeline', percentage: 87 },
-        { name: 'AWS/Cloud', percentage: 80 },
+        { name: 'Docker', percentage: 85 },
+        { name: 'Linux Administration', percentage: 70 },
+        { name: 'CI/CD Pipeline', percentage: 80 },
+        { name: 'AWS/Cloud', percentage: 75 },
       ],
     },
     {
       title: 'Databases & Systems',
       skills: [
-        { name: 'MongoDB', percentage: 90 },
-        { name: 'MySQL/PostgreSQL', percentage: 87 },
-        { name: 'Redis/Caching', percentage: 83 },
-        { name: 'System Architecture', percentage: 91 },
+        { name: 'MongoDB', percentage: 70 },
+        { name: 'MySQL/PostgreSQL', percentage: 85 },
+        { name: 'Redis/Caching', percentage: 75 },
+        { name: 'System Architecture', percentage: 85 },
       ],
     },
   ];

@@ -8,9 +8,8 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   const socialLinks = [
-    { icon: faGithub, href: 'https://github.com/yuvaraj', label: 'GitHub' },
-    { icon: faLinkedin, href: 'https://linkedin.com/in/yuvaraj-bathrabagu', label: 'LinkedIn' },
-    { icon: faTwitter, href: 'https://twitter.com/yuvaraj', label: 'Twitter' },
+    { icon: faGithub, href: 'https://github.com/vg-yuvaraj-bathrabagu', label: 'GitHub' },
+    { icon: faLinkedin, href: 'https://linkedin.com/in/yuvaraj-bathrabagu-140b3472', label: 'LinkedIn' },
     { icon: faEnvelope, href: 'mailto:b.yuvaraj.er@gmail.com', label: 'Email' },
   ];
 
@@ -44,7 +43,7 @@ export default function Footer() {
 
         {/* Professional Info */}
         <div className="text-text-muted text-xs md:text-sm space-y-2">
-          <p>© 2024 Yuvaraj Bathrabagu | Technical Lead & Full Stack Engineer</p>
+          <p>© {new Date().getFullYear()} Yuvaraj Bathrabagu | Technical Lead & Full Stack Engineer</p>
           <p>14+ Years of Excellence in Software Development</p>
           <p className="text-cyber-cyan">Chennai, India | Available for Consultation</p>
         </div>

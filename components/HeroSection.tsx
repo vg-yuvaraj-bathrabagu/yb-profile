@@ -2,8 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
 
 export default function HeroSection() {
   const scrollToSection = (href: string) => {
@@ -32,8 +31,15 @@ export default function HeroSection() {
           transition={{ duration: 4, repeat: Infinity }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-cyber-cyan/20 to-cyber-magenta/20 rounded-full blur-xl" />
-          <div className="relative w-full h-full rounded-full flex items-center justify-center">
-            <FontAwesomeIcon icon={faCode} className="text-cyber-cyan text-4xl md:text-5xl lg:text-6xl drop-shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
+          <div className="relative w-full h-full rounded-full overflow-hidden">
+            <Image
+              src="/images/profile.jpg"
+              alt="Yuvaraj Bathrabagu"
+              fill
+              priority
+              sizes="(max-width: 768px) 8rem, (max-width: 1024px) 12rem, 13rem"
+              className="object-cover rounded-full"
+            />
           </div>
         </motion.div>
 

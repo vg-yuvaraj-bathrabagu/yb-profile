@@ -40,7 +40,7 @@ export default function ContactSection() {
       icon: faLinkedin,
       label: 'LinkedIn',
       value: 'Connect',
-      href: 'https://linkedin.com/in/yuvaraj-bathrabagu',
+      href: 'https://linkedin.com/in/yuvaraj-bathrabagu-140b3472',
     },
   ];
 
