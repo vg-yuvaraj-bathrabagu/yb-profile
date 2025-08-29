@@ -74,7 +74,7 @@ export default function TimelineSection() {
 
       <div className="max-w-7xl mx-auto relative px-4 lg:px-8">
         {/* Timeline line - hidden on mobile, visible on desktop */}
-        <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyber-cyan to-cyber-magenta shadow-[0_0_20px_var(--cyber-cyan)]" />
+        <div className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-cyber-cyan to-cyber-magenta shadow-[0_0_20px_var(--cyber-cyan)]" />
 
         {timelineItems.map((item, index) => (
           <motion.div
@@ -82,23 +82,26 @@ export default function TimelineSection() {
             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className={`flex flex-col lg:grid lg:grid-cols-[1fr_200px_1fr] items-center mb-20 relative`}
+            className={`w-full flex flex-col lg:grid lg:grid-cols-[1fr_12rem_1fr] lg:gap-x-8 items-center lg:items-center mb-20 relative`}
           >
-            {/* Single card - stacked on mobile, positioned left/right on desktop */}
-            <div
-              className={`w-full order-2 lg:order-1 ${index % 2 === 0 ? 'lg:col-start-1' : 'lg:col-start-3'}`}
-            >
-              <div className="bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
-                <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">
-                  {item.company}
-                </h3>
-                <h4 className="text-cyber-green font-semibold text-base mb-3">
-                  {item.role}
-                </h4>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  {item.description}
-                </p>
+            {/* Mobile-only card */}
+            <div className="w-full lg:hidden order-2">
+              <div className="w-full bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
+                <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">{item.company}</h3>
+                <h4 className="text-cyber-green font-semibold text-base mb-3">{item.role}</h4>
+                <p className="text-text-secondary text-sm leading-relaxed">{item.description}</p>
               </div>
+            </div>
+
+            {/* Desktop: left slot (only for even index) */}
+            <div className="hidden lg:flex lg:col-start-1 lg:justify-end order-2 lg:order-1">
+              {index % 2 === 0 && (
+                <div className="w-full lg:max-w-xl bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
+                  <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">{item.company}</h3>
+                  <h4 className="text-cyber-green font-semibold text-base mb-3">{item.role}</h4>
+                  <p className="text-text-secondary text-sm leading-relaxed">{item.description}</p>
+                </div>
+              )}
             </div>
 
             {/* Center column with date badge */}
@@ -106,6 +109,17 @@ export default function TimelineSection() {
               <div className="bg-gradient-to-r from-cyber-cyan to-cyber-magenta text-cyber-bg px-4 py-2 rounded-full font-orbitron text-xs font-semibold whitespace-nowrap shadow-[0_0_20px_rgba(0,255,255,0.5)] z-10">
                 {item.date}
               </div>
+            </div>
+
+            {/* Desktop: right slot (only for odd index) */}
+            <div className="hidden lg:flex lg:col-start-3 lg:justify-start order-2 lg:order-3">
+              {index % 2 === 1 && (
+                <div className="w-full lg:max-w-xl bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
+                  <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">{item.company}</h3>
+                  <h4 className="text-cyber-green font-semibold text-base mb-3">{item.role}</h4>
+                  <p className="text-text-secondary text-sm leading-relaxed">{item.description}</p>
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
