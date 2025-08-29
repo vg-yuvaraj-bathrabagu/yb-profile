@@ -84,67 +84,29 @@ export default function TimelineSection() {
             transition={{ duration: 0.6, delay: index * 0.2 }}
             className={`flex flex-col lg:grid lg:grid-cols-[1fr_200px_1fr] items-center mb-20 relative`}
           >
-            {/* Left content or empty space */}
-            {index % 2 === 0 ? (
-              <div className="w-full">
-                <div className="bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
-                  <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">
-                    {item.company}
-                  </h3>
-                  <h4 className="text-cyber-green font-semibold text-base mb-3">
-                    {item.role}
-                  </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+            {/* Single card - stacked on mobile, positioned left/right on desktop */}
+            <div
+              className={`w-full order-2 lg:order-1 ${index % 2 === 0 ? 'lg:col-start-1' : 'lg:col-start-3'}`}
+            >
+              <div className="bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
+                <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">
+                  {item.company}
+                </h3>
+                <h4 className="text-cyber-green font-semibold text-base mb-3">
+                  {item.role}
+                </h4>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  {item.description}
+                </p>
               </div>
-            ) : (
-              <div className="hidden lg:block" />
-            )}
+            </div>
 
             {/* Center column with date badge */}
-            <div className="flex items-center justify-center my-6 lg:my-0">
+            <div className="flex items-center justify-center my-6 lg:my-0 order-1 lg:order-2 lg:col-start-2">
               <div className="bg-gradient-to-r from-cyber-cyan to-cyber-magenta text-cyber-bg px-4 py-2 rounded-full font-orbitron text-xs font-semibold whitespace-nowrap shadow-[0_0_20px_rgba(0,255,255,0.5)] z-10">
                 {item.date}
               </div>
             </div>
-
-            {/* Right content or empty space */}
-            {index % 2 === 1 ? (
-              <div className="w-full">
-                <div className="bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
-                  <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">
-                    {item.company}
-                  </h3>
-                  <h4 className="text-cyber-green font-semibold text-base mb-3">
-                    {item.role}
-                  </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <div className="hidden lg:block" />
-            )}
-
-            {/* Mobile-only content (shows on mobile when hidden on desktop) */}
-            {index % 2 === 1 && (
-              <div className="w-full lg:hidden">
-                <div className="bg-black/80 border-2 border-cyber-cyan rounded-xl p-6 transition-all hover:border-cyber-magenta hover:shadow-[0_0_40px_rgba(255,0,255,0.3)]">
-                  <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">
-                    {item.company}
-                  </h3>
-                  <h4 className="text-cyber-green font-semibold text-base mb-3">
-                    {item.role}
-                  </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            )}
           </motion.div>
         ))}
       </div>
