@@ -1,0 +1,96 @@
+/* File: app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-cyber-bg text-text-primary;
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iNCIgZmlsbD0iIzAwZmZmZiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9zdmc+'), auto;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-cyan rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber-magenta;
+  }
+}
+
+@layer components {
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    @apply absolute top-0 left-0 w-full h-full;
+    background: #0a0a0f;
+  }
+
+  .glitch-text::before {
+    @apply animate-glitch-1 text-cyber-cyan -z-10;
+  }
+
+  .glitch-text::after {
+    @apply animate-glitch-2 text-cyber-magenta -z-20;
+  }
+
+  .cyber-grid-bg::before {
+    content: '';
+    @apply fixed inset-0 w-full h-full pointer-events-none -z-10;
+    background: 
+      linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%),
+      linear-gradient(0deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%);
+    background-size: 50px 50px;
+  }
+
+  .terminal-cursor {
+    @apply inline-block bg-cyber-green w-2.5 h-4 animate-blink;
+  }
+
+  .skill-progress-bar {
+    @apply relative overflow-hidden;
+  }
+
+  .skill-progress-bar::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: hologramSweep 2s infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient-cyber {
+    @apply bg-gradient-to-r from-cyber-cyan to-cyber-magenta bg-clip-text text-transparent;
+  }
+
+  .border-gradient-cyber {
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+  }
+
+  .shadow-cyber-glow {
+    box-shadow: 
+      0 0 50px rgba(0, 255, 255, 0.3),
+      inset 0 0 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .shadow-cyber-glow-hover {
+    box-shadow: 
+      0 0 80px rgba(255, 0, 255, 0.3),
+      inset 0 0 50px rgba(0, 0, 0, 0.5);
+  }
+}
